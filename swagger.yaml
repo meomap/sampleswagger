@@ -1,0 +1,39 @@
+swagger: '2.0'
+info:
+  description: Demo A Simple Post with Required Params
+  version: 1.0.0
+  title: A Resource Management Application
+
+paths:
+  /create:
+    post:
+      summary: Create new resource
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Resource
+          required: true
+          schema:
+            $ref: '#/definitions/Resource'
+      responses:
+        201:
+          description: Resource created
+          schema: 
+            $ref: '#/definitions/Resource'
+
+definitions:
+  Resource:
+    type: object
+    required:
+      - name
+    properties:
+      id:
+        type: integer
+        format: int64
+        readOnly: true
+      name:
+        type: string
